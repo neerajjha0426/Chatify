@@ -1,0 +1,13 @@
+{
+  "name": "chatify-app",
+  "version": "1.0.0",
+  "description": "Chatify is a simple chat application built using the MERN stack (MongoDB, Express, React, Node). This repository contains two top-level folders:",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm install --prefix Backend && npm install --prefix Frontend && npm run build --prefix Frontend",
+    "start": "npm run start --prefix Backend"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

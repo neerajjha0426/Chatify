@@ -1,21 +1,33 @@
 //Express Import
 import express from 'express';
-const app = express();
-
-//Dotenv Import
 import dotenv from 'dotenv';
-dotenv.config();
-
-//Route Import for auth
 import authRoutes from './route/auth.route.js';
-app.use('/api/auth', authRoutes);
-
 import messageRoutes from './route/message.route.js';
+import path from 'path';
+
+//express app and dotenv config
+const app = express();
+dotenv.config();
+//Routes
+app.use('/api/auth', authRoutes);
 app.use('/api/messages', messageRoutes);
+
+//for deployment
+const __dirname = path.resolve();
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static(path.join(__dirname, "../Frontend/dist")));
+
+    // Use a regex route to serve React's index.html for any path (avoids path-to-regexp parsing of '*')
+    app.get(/.*/, (_, res) => {
+        res.sendFile(path.join(__dirname, "../Frontend","dist","index.html"));
+    });
+}
 
 
 // console.log('Server is starting...'+process.env.PORT);
 const PORT = process.env.PORT || 3000;
+
+
 
 
 
