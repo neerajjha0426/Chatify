@@ -1,5 +1,6 @@
 //Express Import
 import express from 'express';
+import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 import authRoutes from './route/auth.route.js';
 import messageRoutes from './route/message.route.js';
@@ -10,6 +11,7 @@ import { connectDB } from './lib/db.js';
 //express app and dotenv config
 const app = express();
 app.use(express.json());
+app.use(cookieParser());
 
 dotenv.config();
 //Routes
