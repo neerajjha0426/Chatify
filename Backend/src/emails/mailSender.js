@@ -36,6 +36,7 @@ let mailOptions = {
     return console.log('Error while sending mail:', error);
   }
   console.log('Email sent successfully:', info.response);
+  console.log('welcome email sent to:', email);
 });
 
 };
